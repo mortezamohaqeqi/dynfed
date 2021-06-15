@@ -1,5 +1,5 @@
 # dynfed
-The DynFed scheduling algorithm proposed in the RTCSA 2021 paper.
+The *DynFed* scheduling algorithm proposed in the RTCSA 2021 paper.
 
 ### What is this repository for? ###
 
@@ -17,5 +17,5 @@ The project is compiled using Maven. To compile, one needs to:
 
 (tested only on Windows)
 
-### Details ###
- * # main() # function is in application.test.Tester
+### Other details ###
+ * **main()** function is in application.test.Tester
