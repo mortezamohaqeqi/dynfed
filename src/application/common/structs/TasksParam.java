@@ -56,9 +56,6 @@ public class TasksParam
 	{
 		switch (period_src)
 		{
-			case _5G:
-				return PeriodSets.FIVE_G_PERIODS;
-			
 			case AUTOSAR:
 				return PeriodSets.AUTOSAR_PERIODS;
 			

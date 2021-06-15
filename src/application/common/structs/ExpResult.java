@@ -306,12 +306,9 @@ public class ExpResult
 		EPreemptMethod method = schedParams.method();
 		title = schedParams.policy().name() + "_" + expparam.system.cores;
     	
-    	title += // policy() == EPolicy.Exhaustive            ? " (Ticked = " + tick() :
-    			 method == EPreemptMethod.Non_Preemptive     ? " (Non_Preempt" :
-				 method == EPreemptMethod.Ticked_Preemptive ? " (Ticked_Preemptive" :
-    			 method == EPreemptMethod.Preemptive       ? " (Preemptive" :
-				 method == EPreemptMethod.Ticked_Adaptive  ? " (Ticked_Adaptive" :
-        	     method == EPreemptMethod.NW_Ticked_Preemptive  ? " (NW_Ticked_Preemptive = " + schedParams.tick() : "";
+    	title += // policy() == EPolicy.Exhaustive         ? " (Ticked = " + tick() :
+    			 method == EPreemptMethod.Non_Preemptive   ? " (Non_Preempt" :
+    			 method == EPreemptMethod.Preemptive       ? " (Preemptive" : "";
     	
     	title += ")";		
 	}

@@ -62,7 +62,7 @@ public abstract class AbsGraphCreator
 		if (graph == EGraphGenMethod.SeqParallel) // .LOG_UNIFORM || period_type == EAppDomain.AUTOSAR_SP)
 			return new SPTasks(SEED);
 		
-		else if (graph == EGraphGenMethod.Layered) // if (period_type == EAppDomain._5G || period_type == EAppDomain.AUTOSAR)
+		else if (graph == EGraphGenMethod.Layered) 
 			return new LayeredDAGs(SEED);
 		
 		else

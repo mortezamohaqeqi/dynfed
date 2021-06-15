@@ -172,24 +172,7 @@ public class SchedulerSimulator extends AbsTimeAnalyzer implements Middleware
 		case Preemptive:
 			approach = EPreemptMethod.Preemptive;
 			break;
-			
-		case Ticked_Preemptive:
-			if (isTick(time))
-				approach = EPreemptMethod.Preemptive;
-			else
-				approach = EPreemptMethod.Non_Preemptive;
-			break;
 		
-		case NW_Ticked_Preemptive:
-			if (isTick(time))
-				approach = EPreemptMethod.Preemptive;
-			break;
-			
-		case Ticked_Adaptive:
-			if (platform.allFree() == true)
-				;			// TODO: dequeue, and then, if until last event no relsease, non-preemptive
-			break;
-			
 		default:
 			System.out.println("Error: unimplemented preemption policy: " + method);
 		}
@@ -203,19 +186,6 @@ public class SchedulerSimulator extends AbsTimeAnalyzer implements Middleware
 		else if (approach == EPreemptMethod.Non_Preemptive) {
 			events.addAll(nonPreemptiveScheduling(time, EResourceType.CPU));
 			events.addAll(nonPreemptiveScheduling(time, EResourceType.Memory));
-		}
-		
-		if (method == EPreemptMethod.NW_Ticked_Preemptive)
-		{
-			if (events.size() > 0)
-			{
-				events.clear();
-				if (time >= HP) // && eligs.size() > 0) // && platform.firmRT() == false)
-				{
-					events.add(time + tick);
-					ticks.add(time + tick);
-				}
-			}
 		}
 					
 		return events;
@@ -271,13 +241,6 @@ public class SchedulerSimulator extends AbsTimeAnalyzer implements Middleware
 		{
 			return true;
 		}
-		else if (method == EPreemptMethod.Ticked_Preemptive || method == EPreemptMethod.NW_Ticked_Preemptive)
-		{
-			if (isTick(now))
-			{
-				return true;
-			}
-		}
 		return false;
 	}
 	
@@ -325,10 +288,6 @@ public class SchedulerSimulator extends AbsTimeAnalyzer implements Middleware
 	{
 		SortedSet<Integer> events = new TreeSet<>();
 		events.addAll(Util.toList(releases));
-		if (method == EPreemptMethod.Ticked_Preemptive || method == EPreemptMethod.NW_Ticked_Preemptive)
-		{
-			events.addAll(ticks()); // for LP
-		}
 		
 		return events;
 	}
@@ -398,11 +357,8 @@ public class SchedulerSimulator extends AbsTimeAnalyzer implements Middleware
 	
 	private void validate() 
 	{
-		boolean methodIsValid = method == EPreemptMethod.Ticked_Preemptive 		|| 
-				 				method == EPreemptMethod.Non_Preemptive     	|| 
-				 				method == EPreemptMethod.Preemptive		 		||
-				 				method == EPreemptMethod.NW_Ticked_Preemptive  	||
-				 				method == EPreemptMethod.Ticked_Adaptive;
+		boolean methodIsValid = method == EPreemptMethod.Non_Preemptive     	|| 
+				 				method == EPreemptMethod.Preemptive;
 		
 		Util.assert_(methodIsValid, "Uneexpected method for simulation: " + method);
 	}

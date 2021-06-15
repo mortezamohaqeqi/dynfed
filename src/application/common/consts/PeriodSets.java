@@ -9,9 +9,6 @@ import application.util.Util;
 public class PeriodSets 
 {
 	public static final int[] AUTOSAR_ext;
-	public static final int[] FIVE_G_PERIODS  = new int[]{125, 250, 500, 1000}; // us
-	// private static final int[] FIVE_G_PERIODS  = new int[]{100, 125, 200, 250, 500, 1000}; // us
-	// private static final int[] FIVE_G_PERIODS  = new int[]{100, 125, 200, 225, 250, 300}; // DF better!
 	public static final int[] AUTOSAR_PERIODS = new int[]{1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 1000000}; // us
 	public static final int[] AUTOSAR_HARMONIC = new int[]{1000, 2000, 10000, 20000, 100000, 200000, 1000000}; // us
 	// public static final int[] AUTOSAR_HARMONIC = new int[]{1000, 5000, 10000, 50000, 100000, 200000, 1000000}; // us
@@ -35,7 +32,6 @@ public class PeriodSets
 		AUTOSAR_ext = Util.toArray(vals);
 		
 		STANDARD.addAll(Util.toList(AUTOSAR_ext));
-		STANDARD.addAll(Util.toList(FIVE_G_PERIODS));
 		STANDARD.addAll(Util.toList(AUTOSAR_PERIODS));
 		STANDARD.addAll(Util.toList(AUTOSAR_HARMONIC));
 	}
