@@ -7,7 +7,7 @@ The DynFed scheduling algorithm proposed in the RTCSA 2021 paper.
 
 ### How do I get set up? ###
 
-The project is build using Maven. To compile, one needs to:
+The project is compiled using Maven. To compile, one needs to:
 
 * Install [Java](https://openjdk.java.net/install/)
 * Install [Maven](https://maven.apache.org/install.html)
@@ -17,4 +17,5 @@ The project is build using Maven. To compile, one needs to:
 
 (tested only on Windows)
 
-main() function is in application.test.Tester
+### Details ###
+ * # main() # function is in application.test.Tester
